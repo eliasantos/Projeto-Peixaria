@@ -44,9 +44,31 @@ public class LoginController {
 	}
 	
 	@GetMapping("/")
-	public String dashboard(Model model, HttpServletRequest request) throws UnsupportedEncodingException {
-		model.addAttribute("nome", CookieService.getCookie(request, "nomeUsuario"));
-		return "usuarioFront/index";
+	public String dashboard(Model model, HttpServletRequest request, HttpServletResponse response) throws UnsupportedEncodingException {
+	    String usuarioId = CookieService.getCookie(request, "usuarioId");
+
+	    if (usuarioId == null) {
+	        return "redirect:/login";
+	    }
+
+	    try {
+	        Long id = Long.parseLong(usuarioId);
+	        Usuario usuario = ur.findById(id).orElse(null);
+
+	        if (usuario == null) {
+	            CookieService.deleteCookie(response, "usuarioId");
+	            return "redirect:/login";
+	        }
+
+	        model.addAttribute("nome", usuario.getNome());
+	        model.addAttribute("email", usuario.getEmail());
+	        return "usuarioFront/index";
+
+	    } catch (NumberFormatException e) {
+	        // Se o ID do cookie for inválido
+	        CookieService.deleteCookie(response, "usuarioId");
+	        return "redirect:/login";
+	    }
 	}
 	
 	@PostMapping("/logar")
@@ -130,6 +152,12 @@ public class LoginController {
 
 	    model.addAttribute("mensagem", "Senha alterada com sucesso. Faça login.");
 	    return "usuarioFront/login";
+	}
+
+	@GetMapping("/logout")
+	public String logout(HttpServletRequest request, HttpServletResponse response) {
+	    CookieService.deleteCookie(response, "usuarioId"); // Apaga o cookie
+	    return "redirect:/login"; // Volta pra tela de login
 	}
 
 

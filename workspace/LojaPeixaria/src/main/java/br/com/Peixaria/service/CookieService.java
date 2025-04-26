@@ -10,6 +10,7 @@ import jakarta.servlet.http.Cookie;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
+
 public class CookieService {
 
 	public static void setCookie(HttpServletResponse response, String key, String valor, int segundos) throws UnsupportedEncodingException {
@@ -33,5 +34,13 @@ public class CookieService {
 		
 		return valor;
 	}
+	
+	public static void deleteCookie(HttpServletResponse response, String nome) {
+		Cookie cookie = new Cookie(nome, null);
+	    cookie.setMaxAge(0);
+	    cookie.setPath("/");
+	    response.addCookie(cookie);
+	}
+
 	
 }

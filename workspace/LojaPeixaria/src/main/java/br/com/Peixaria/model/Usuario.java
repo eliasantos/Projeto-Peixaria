@@ -23,6 +23,7 @@ public class Usuario {
 	private String email;
 	@NotEmpty
 	private String senha;
+	private String perfil;
 	@Column(nullable = true)
 	private String resetToken;
 	@Column(nullable = true)

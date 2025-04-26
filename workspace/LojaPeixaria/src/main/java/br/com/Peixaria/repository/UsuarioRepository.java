@@ -1,13 +1,12 @@
 package br.com.Peixaria.repository;
 
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.CrudRepository;
 
 import br.com.Peixaria.model.Usuario;
 
-public interface UsuarioRepository extends CrudRepository<Usuario, String>{
+public interface UsuarioRepository extends JpaRepository<Usuario, Long>{
 
-	Usuario findById(Long id);
 	Usuario findByEmail(String email);
 	Usuario findByResetToken(String resetToken);
 	
