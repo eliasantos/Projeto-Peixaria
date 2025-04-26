@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Recuperar Senha</title>
+    <style>
+        /* Estilos básicos para o exemplo */
+        body {
+            background-color: #f44336;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            background-color: #ff6f61;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0px 0px 15px rgba(0,0,0,0.2);
+        }
+        input, button {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 10px;
+            border: none;
+        }
+        button {
+            background-color: #001f3f;
+            color: #ffffff;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .avancar {
+            margin-top: 20px;
+            background-color: #0074D9;
+        }
+    </style>
+</head>
+<body>
+   <div class="container">
+        <h1>Recuperar Senha</h1>
+        <form action="/esqueci-senha" method="post">
+            <input type="email" name="email" placeholder="Digite seu e-mail" required>
+            <br>
+            <button type="submit">Enviar Token</button>
+        </form>
+    </div>
+</body>
+</html>

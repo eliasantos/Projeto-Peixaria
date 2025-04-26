@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/usuarioFront/loginStyle.css">
+    <title>Login</title>
+</head>
+
+<script>
+    const erroMsg = document.querySelector('.mensagem-erro');
+    if (erroMsg && erroMsg.textContent.trim() !== "") {
+        erroMsg.style.display = "block";
+    }
+</script>
+
+<body>
+    <div class="main-login">
+        <div class="left-login">
+            <img src="/usuarioFront/banca.svg" class="left-login-image" alt="banca animada">
+        </div>
+        <div class="right-login">
+            <form class="card-login" method="post" th:action="@{/logar}">
+                <h1>LOGIN</h1>
+                <div class="textfield">
+                    <label for="usuario">Usuário</label>
+                    <input type="text" name="email" id="email" placeholder="Digite seu usuário" required>
+                </div>
+                <div class="textfield">
+                    <label for="senha">Senha</label>
+                    <input type="password" name="senha" id="senha" placeholder="Digite sua senha" required>
+                    <a class="textfield-recuperar" th:href="@{/esqueci-senha}">Esqueceu sua senha?</a>
+                </div>
+                <div th:if="${erro}" class="mensagem-erro" th:text="${erro}"></div>
+                <button type="submit" class="btn-login">Entrar</button>
+                <a class="textfield-registro" th:href="@{/registro}">Criar conta</a>
+            </form>
+
+        </div>
+    </div>
+</body>
+</html>

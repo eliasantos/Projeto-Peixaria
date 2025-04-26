@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/usuarioFront/registroStyle.css">
+    <title>Login</title>
+</head>
+<body>
+    <div class="main-login">
+        <div class="left-login">
+            <img src="/usuarioFront/sign-up-animate.svg" class="left-login-image" alt="registro animado">
+        </div>
+        <div class="right-login">
+            <form class="card-login" method="post" action="/registro">
+
+                <h1>Registre-se</h1>
+                <div class="textfield">
+                    <label for="usuario">Nome</label>
+                    <input type="text" name="nome" id="nome" placeholder="Digite seu nome" required>
+                </div>
+                <div class="textfield">
+                    <label for="email">E-mail</label>
+                    <input type="email" name="email" id="email" placeholder="Digite seu e-mail" required>
+                  </div>                  
+                <div class="textfield">
+                    <label for="senha">Senha</label>
+                    <input type="password" name="senha" id="senha" placeholder="Digite sua senha" required>
+                </div>
+                <button type="submit" class="btn-login">Registrar</button>
+                <a class="textfield-registro" href="/login">Entrar</a>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
